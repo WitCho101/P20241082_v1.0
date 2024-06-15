@@ -1,0 +1,23 @@
+﻿@*@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
+@{
+    var userRole = Session["UserRole"] as string;
+
+    if (userRole == "Admin")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (userRole == "User")
+    {
+        Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    }
+    else
+    {
+        Layout = null; // O algún layout por defecto para no autenticados
+    }
+}
+
+
+
