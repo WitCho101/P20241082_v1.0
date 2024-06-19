@@ -93,6 +93,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rdcn_adicionales.cs" />
+    <Compile Include="Rdcn_campanas.cs" />
+    <Compile Include="Rdcn_Cliente.cs" />
+    <Compile Include="Rdcn_usuario_cliente.cs" />
+    <Compile Include="Rdcn_usuario_producto.cs" />
     <Compile Include="Tickets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios.cs" />

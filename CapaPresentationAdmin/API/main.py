@@ -14,6 +14,7 @@ from analysis_rfm import analisis_rfm
 from analysis_time_series_clustering import analisis_time_series_clustering
 from analysis_satisfaction_customer import calcular_satisfaccion
 from analysis_risk_churn import analysis_risk_churn
+from Recomendations import Generar_Recomendaciones
 
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger()
@@ -240,6 +241,7 @@ def main():
     main_db()
     bd_process()
     DataMining_Fuction()
+    Generar_Recomendaciones(ventas_limpias_file)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,226 @@
+﻿
+@{
+    ViewBag.Title = "RecomendationsUser";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">Resumen</a></li>
+    <li class="breadcrumb-item active">Recomendaciones</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-chart-line me-1"></i> Cuadros de Recomendaciones
+    </div>
+    <div class="card-body">
+        <ul class="nav nav-tabs" id="recomendacionesTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="clientes-tab" data-bs-toggle="tab" href="#clientes" role="tab" aria-controls="clientes" aria-selected="true">Clientes</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="campanas-tab" data-bs-toggle="tab" href="#campanas" role="tab" aria-controls="campanas" aria-selected="false">Campañas</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="adicionales-tab" data-bs-toggle="tab" href="#adicionales" role="tab" aria-controls="adicionales" aria-selected="false">Productos Estrella</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="usuario-cliente-tab" data-bs-toggle="tab" href="#usuario-cliente" role="tab" aria-controls="usuario-cliente" aria-selected="false">Usuario por Cliente</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="usuario-producto-tab" data-bs-toggle="tab" href="#usuario-producto" role="tab" aria-controls="usuario-producto" aria-selected="false">Usuario por Producto</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="recomendacionesTabContent">
+            <div class="tab-pane fade show active" id="clientes" role="tabpanel" aria-labelledby="clientes-tab">
+                <div class="mt-4">
+                    <h4>Recomendaciones de Clientes</h4>
+                    <p>Esta tabla proporciona recomendaciones específicas para los clientes basadas en su comportamiento de compra y otros análisis. Incluye sugerencias sobre acciones que se pueden tomar para mejorar la experiencia del cliente y fomentar su lealtad.</p>
+                    <table id="tabla_clientes" class="display cell-border" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre Cliente</th>
+                                <th>Recencia</th>
+                                <th>Frecuencia</th>
+                                <th>Valor Monetario</th>
+                                <th>Segmento</th>
+                                <th>Recomendación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="campanas" role="tabpanel" aria-labelledby="campanas-tab">
+                <div class="mt-4">
+                    <h4>Recomendaciones de Campañas</h4>
+                    <p>Esta tabla ofrece recomendaciones de campañas de marketing basadas en el análisis de ventas de productos. Detalles sobre qué productos deberían ser promocionados en campañas futuras, basándose en el rendimiento de ventas, incluyendo el mes, descripción del producto y la recomendación de campaña específica.</p>
+                    <table id="tabla_campanas" class="display cell-border" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Mes</th>
+                                <th>Descripción Producto</th>
+                                <th>Recomendación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="adicionales" role="tabpanel" aria-labelledby="adicionales-tab">
+                <div class="mt-4">
+                    <h4>Recomendaciones de Productos Estrellas</h4>
+                    <p>Proporciona recomendaciones adicionales basadas en el análisis de los productos más vendidos en los últimos meses. Incluye el mes, descripción del producto y recomendaciones de campañas para productos que han mostrado una alta demanda reciente.</p>
+                    <table id="tabla_adicionales" class="display cell-border" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Mes</th>
+                                <th>Descripción Producto</th>
+                                <th>Recomendación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="usuario-cliente" role="tabpanel" aria-labelledby="usuario-cliente-tab">
+                <div class="mt-4">
+                    <h4>Recomendaciones de usuarios sobre los clientes</h4>
+                    <p>Proporciona recomendaciones para los usuarios basadas en la cantidad de clientes a los que han vendido y el total de ventas. Incluye detalles sobre el usuario, el mes, la cantidad de clientes, el total de ventas y recomendaciones específicas para incentivar a los usuarios que han tenido un alto impacto en las ventas.</p>
+                    <table id="tabla_usuario_cliente" class="display cell-border" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Mes</th>
+                                <th>Cantidad Cliente</th>
+                                <th>Total Ventas</th>
+                                <th>Recomendación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="usuario-producto" role="tabpanel" aria-labelledby="usuario-producto-tab">
+                <div class="mt-4">
+                    <h4>Recomendaciones de usuarios sobre los productos</h4>
+                    <p>Esta tabla contiene recomendaciones para los usuarios basadas en los productos que han vendido. Incluye detalles sobre el usuario, el mes, la cantidad de productos vendidos, el total de ventas, la cantidad de clientes y recomendaciones específicas para incentivar a los usuarios.</p>
+                    <table id="tabla_usuario_producto" class="display cell-border" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Mes</th>
+                                <th>Cantidad Producto</th>
+                                <th>Total Ventas</th>
+                                <th>Cantidad Cliente</th>
+                                <th>Recomendación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tabla_clientes').DataTable({
+                "ajax": {
+                    url: '@Url.Action("ListarRecomendacionesClientes", "Home")',
+                    type: "GET",
+                    datatype: "json"
+                },
+                "columns": [
+                    { "data": "Nombre_cliente" },
+                    { "data": "Recencia" },
+                    { "data": "Frecuencia" },
+                    { "data": "Valor_monetario" },
+                    { "data": "Segmento" },
+                    { "data": "Recomendacion_cliente" }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                }
+            });
+
+            $('#tabla_campanas').DataTable({
+                "ajax": {
+                    url: '@Url.Action("ListarRecomendacionesCampanas", "Home")',
+                    type: "GET",
+                    datatype: "json"
+                },
+                "columns": [
+                    { "data": "Mes" },
+                    { "data": "Descripcion_producto" },
+                    { "data": "Recomendacion_campana" }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                }
+            });
+
+            $('#tabla_adicionales').DataTable({
+                "ajax": {
+                    url: '@Url.Action("ListarRecomendacionesAdicionales", "Home")',
+                    type: "GET",
+                    datatype: "json"
+                },
+                "columns": [
+                    { "data": "Mes" },
+                    { "data": "Descripcion_producto" },
+                    { "data": "Recomendacion_adicional" }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                }
+            });
+
+            $('#tabla_usuario_cliente').DataTable({
+                "ajax": {
+                    url: '@Url.Action("ListarRecomendacionesUsuarioCliente", "Home")',
+                    type: "GET",
+                    datatype: "json"
+                },
+                "columns": [
+                    { "data": "Usuario" },
+                    { "data": "Mes" },
+                    { "data": "Cantidad_cliente" },
+                    { "data": "Total_ventas" },
+                    { "data": "Recomendacion_usuario_cliente" }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                }
+            });
+
+            $('#tabla_usuario_producto').DataTable({
+                "ajax": {
+                    url: '@Url.Action("ListarRecomendacionesUsuarioProducto", "Home")',
+                    type: "GET",
+                    datatype: "json"
+                },
+                "columns": [
+                    { "data": "Usuario" },
+                    { "data": "Mes" },
+                    { "data": "Cantidad_producto" },
+                    { "data": "Total_ventas" },
+                    { "data": "Cantidad_cliente" },
+                    { "data": "Recomendacion_usuario_producto" }
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+                }
+            });
+        });
+    </script>
+}
+

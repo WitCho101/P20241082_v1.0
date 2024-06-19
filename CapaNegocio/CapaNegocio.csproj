@@ -93,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_Recomendaciones.cs" />
     <Compile Include="CN_Recursos.cs" />
     <Compile Include="CN_Ticket.cs" />
     <Compile Include="CN_Usuarios.cs" />

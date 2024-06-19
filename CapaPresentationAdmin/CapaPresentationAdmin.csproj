@@ -7184,6 +7184,7 @@
     <Content Include="API\analysis_ventas.py" />
     <Content Include="API\bd_entry.py" />
     <Content Include="API\main.py" />
+    <Content Include="API\Recomendations.py" />
     <Content Include="API\validation_files.py" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
@@ -17304,6 +17305,9 @@
     <Content Include="Views\Mantenedor\TicketsUser.cshtml" />
     <Content Include="Views\Mantenedor\PreguntasFrecuentesUser.cshtml" />
     <Content Include="Views\Home\Analisis.cshtml" />
+    <Content Include="Views\Home\AnalisisUser.cshtml" />
+    <Content Include="Views\Home\Recomendations.cshtml" />
+    <Content Include="Views\Home\RecomendationsUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

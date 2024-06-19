@@ -39,6 +39,65 @@ namespace CapaPresentationAdmin.Controllers
             return View();
         }
 
+        public ActionResult AnalisisUser()
+        {
+            return View();
+        }
+
+
+        public ActionResult Recomendations()
+        {
+            return View();
+        }
+
+        public ActionResult RecomendationsUser()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public JsonResult ListarRecomendacionesClientes()
+        {
+            List<Rdcn_Cliente> oLista = new List<Rdcn_Cliente>();
+            oLista = new CN_Recomendaciones().Listar_Recomendaciones_Cliente();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        public JsonResult ListarRecomendacionesCampanas()
+        {
+            List<Rdcn_campanas> oLista = new List<Rdcn_campanas>();
+            oLista = new CN_Recomendaciones().Listar_Recomendaciones_Campana();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult ListarRecomendacionesAdicionales()
+        {
+            List<Rdcn_adicionales> oLista = new List<Rdcn_adicionales>();
+            oLista = new CN_Recomendaciones().Listar_Recomendaciones_Adicionales();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        public JsonResult ListarRecomendacionesUsuarioCliente()
+        {
+            List<Rdcn_usuario_cliente> oLista = new List<Rdcn_usuario_cliente>();
+            oLista = new CN_Recomendaciones().Listar_Recomendaciones_Usuario_Cliente();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        public JsonResult ListarRecomendacionesUsuarioProducto()
+        {
+            List<Rdcn_usuario_producto> oLista = new List<Rdcn_usuario_producto>();
+            oLista = new CN_Recomendaciones().Listar_Recomendaciones_Usuario_Productos();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
 
 
         [HttpPost]
