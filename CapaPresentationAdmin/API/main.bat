@@ -1,0 +1,1 @@
+"C:\Users\Jeremy SG\source\repos\P20241082_v1.0\CapaPresentationAdmin\API\.venv\Scripts\python" "C:\Users\Jeremy SG\source\repos\P20241082_v1.0\CapaPresentationAdmin\API\main.py"

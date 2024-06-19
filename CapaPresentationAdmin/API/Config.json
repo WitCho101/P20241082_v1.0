@@ -1,0 +1,7 @@
+{
+    "username": "admin",
+    "password": "Hola#1234",
+    "host": "mysqldatabase.cv800c0wsn3p.us-east-2.rds.amazonaws.com",
+    "port": "3306",
+    "database": "bd_olap"
+}
