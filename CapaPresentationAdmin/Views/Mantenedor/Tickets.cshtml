@@ -182,6 +182,7 @@
             $("#txtnombre").val(nombreUsuario);
             $("#txtcorreo").val(correoUsuario);
             $("#txtasunto").val("");
+            $("#cboprioridad").val(1);
             $("#cboestado").val(1);
 
             $("#mensajeError").hide();
@@ -189,10 +190,11 @@
             if (json != null) {
 
                 $("#txtid").val(json.IdTicket);
-                $("#txtidUsuario").val(json.IdUsuario);
-                $("#txtnombres").val(json.Nombre);
-                $("#txtcorreo").val(json.Correo);
+                $("#txtidUsuario").val(json.oUsuario.IdUsuario);
+                $("#txtnombre").val(json.oUsuario.Nombre); // Accede correctamente al nombre
+                $("#txtcorreo").val(json.oUsuario.Correo); // Accede correctamente al correo
                 $("#txtasunto").val(json.Asunto);
+                $("#cboprioridad").val(json.Prioridad ? 1 : 0);
                 $("#cboestado").val(json.Estado == true ? 1 : 0);
 
             }
@@ -234,12 +236,8 @@
                     datatype: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        if (data.resultado) {
-                            tabladata.row(usuarioseleccionado).remove().draw();
-                        } else {
-                            swal("No se puedo eliminar", data.mensaje, "error");
-                        }
-
+                        tabladata.ajax.reload(null, false);
+                        swal("Eliminado", "El ticket ha sido eliminado correctamente.", "success");
                     },
                     error: function (error) {
                         $(".modal-body").LoadingOverlay("hide");
@@ -262,6 +260,7 @@
             var Ticket = {
                 IdTicket: $("#txtid").val(),
                 IdUsuario: $("#txtIdUsuario").val(idUsuario),
+                Prioridad: $("#cboprioridad").val() == "1" ? true : false,
                 Estado: $("#cboestado").val() == 1 ? true : false,
                 Asunto: $("#txtasunto").val(),
                 Correo: $("#txtcorreo").val(correoUsuario),
@@ -285,8 +284,9 @@
 
                         if (data.resultado != 0) {
                             Ticket.IdTicket = data.resultado;
-                            tabladata.row.add(Ticket).draw(false);
+                            tabladata.ajax.reload(null, false);
                             $("#FormModal").modal("hide");
+                            swal("Creado", "El ticket ha sido creado correctamente.", "success");
                         } else {
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();
@@ -299,6 +299,8 @@
                             tabladata.row(filaSeleccionada).data(Ticket).draw(false);
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");
+                            swal("Editado", "El ticket ha sido actualizado correctamente.", "success");
+                            tabladata.ajax.reload(null, false);
                         } else {
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();

@@ -147,6 +147,14 @@ namespace CapaDatos
 
                     resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
 
+                    if (resultado)
+                    {
+                        Mensaje = "Usuario eliminado correctamente.";
+                    }
+                    else
+                    {
+                        Mensaje = "No se encontró el usuario para eliminar.";
+                    }
                 }
 
             }
@@ -201,8 +209,8 @@ namespace CapaDatos
             {
                 using (MySqlConnection oconexion = new MySqlConnection(Conexion.cn))
                 {
-                    MySqlCommand cmd = new MySqlCommand("UPDATE usuario SET CLAVE = @clave, reestablecer = 1 WHERE Id_Usuario = @idusuario ORDER BY Id_Usuario LIMIT 1;", oconexion);
-                    cmd.Parameters.AddWithValue("@id", idusuario);
+                    MySqlCommand cmd = new MySqlCommand("UPDATE usuario SET Clave = @clave, reestablecer = 1 WHERE Id_Usuario = @idusuario;", oconexion);
+                    cmd.Parameters.AddWithValue("@idusuario", idusuario);
                     cmd.Parameters.AddWithValue("@clave", clave);
                     cmd.CommandType = CommandType.Text;
 

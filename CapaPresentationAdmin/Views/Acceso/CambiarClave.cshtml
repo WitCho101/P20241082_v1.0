@@ -23,7 +23,7 @@
                                 <div class="card-body">
                                     <form action="@Url.Action("CambiarClave","Acceso")" method="post">
 
-                                        <input class="form-control" type="text" value="@TempData["IdUsuario"]" name="idusuario" />
+                                        <input type="hidden" name="idusuario" value="@TempData["IdUsuario"]" />
 
                                         <div class="row mb-3">
                                             <div class="col-md-12">

@@ -77,9 +77,11 @@ namespace CapaPresentationAdmin.Controllers
         public ActionResult CambiarClave(string idusuario, string claveactual,string nuevaclave, string confirmarclave)
         {
             Usuarios oUsuario = new Usuarios();
-            oUsuario = new CN_Usuarios().Listar().Where(u => u.IdUsuario == int.Parse(idusuario)).FirstOrDefault();
+            //oUsuario = new CN_Usuarios().Listar().Where(u => u.IdUsuario == int.Parse(idusuario)).FirstOrDefault();
+            oUsuario = new CN_Usuarios().Listar().FirstOrDefault(u => u.IdUsuario == int.Parse(idusuario));
 
-            if(oUsuario.Clave != CN_Recursos.ConvertirSha256(claveactual))
+
+            if (oUsuario.Clave != CN_Recursos.ConvertirSha256(claveactual))
             {
                 TempData["IdUsuario"] = idusuario;
                 ViewData["vclave"] = "";
@@ -118,9 +120,10 @@ namespace CapaPresentationAdmin.Controllers
         public ActionResult Reestablecer(string correo)
         {
             Usuarios oUsuario = new Usuarios();
-            oUsuario = new CN_Usuarios().Listar().Where(item => item.Correo == correo).FirstOrDefault();
+            //oUsuario = new CN_Usuarios().Listar().Where(item => item.Correo == correo).FirstOrDefault();
+            oUsuario = new CN_Usuarios().Listar().FirstOrDefault(item => item.Correo == correo);
 
-            if(oUsuario == null)
+            if (oUsuario == null)
             {
                 ViewBag.Error = "No se encontró un usuario relacionado a este correo";
                 return View();

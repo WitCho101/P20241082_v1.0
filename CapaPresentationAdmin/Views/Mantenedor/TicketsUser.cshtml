@@ -179,6 +179,7 @@
             $("#txtnombre").val(nombreUsuario);
             $("#txtcorreo").val(correoUsuario);
             $("#txtasunto").val("");
+            $("#cboprioridad").val(1);
             $("#cboestado").val(1);
 
             $("#mensajeError").hide();
@@ -190,6 +191,7 @@
                 $("#txtnombres").val(json.Nombre);
                 $("#txtcorreo").val(json.Correo);
                 $("#txtasunto").val(json.Asunto);
+                $("#cboprioridad").val(json.Prioridad ? 1 : 0);
                 $("#cboestado").val(json.Estado == true ? 1 : 0);
 
             }
@@ -259,6 +261,7 @@
             var Ticket = {
                 IdTicket: $("#txtid").val(),
                 IdUsuario: $("#txtIdUsuario").val(idUsuario),
+                Prioridad: $("#cboprioridad").val() == "1" ? true : false,
                 Estado: $("#cboestado").val() == 1 ? true : false,
                 Asunto: $("#txtasunto").val(),
                 Correo: $("#txtcorreo").val(correoUsuario),
@@ -282,8 +285,17 @@
 
                         if (data.resultado != 0) {
                             Ticket.IdTicket = data.resultado;
-                            tabladata.row.add(Ticket).draw(false);
+
+                            tabladata.ajax.reload(null, false);
+
                             $("#FormModal").modal("hide");
+
+                            swal({
+                                title: "Ticket Ingresado",
+                                text: "El ticket ha sido ingresado correctamente.",
+                                icon: "success",
+                                button: "OK",
+                            });
                         } else {
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();

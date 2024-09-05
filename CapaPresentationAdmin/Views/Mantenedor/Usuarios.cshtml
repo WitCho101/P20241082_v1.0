@@ -200,11 +200,8 @@
                     datatype: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        if (data.resultado) {
-                            tabladata.row(usuarioseleccionado).remove().draw();
-                        } else {
-                            swal("No se puedo eliminar", data.mensaje, "error");
-                        }
+                        tabladata.ajax.reload(null, false);
+                        swal("Eliminado", data.mensaje, "success");
 
                     },
                     error: function (error) {
@@ -252,6 +249,7 @@
                             Usuario.IdUsuario = data.resultado;
                             tabladata.row.add(Usuario).draw(false);
                             $("#FormModal").modal("hide");
+                            swal("Creado", "El usuario ha sido creado correctamente.", "success");
                         } else {
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();
@@ -264,6 +262,8 @@
                             tabladata.row(filaSeleccionada).data(Usuario).draw(false);
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");
+                            tabladata.ajax.reload(null, false);
+                            swal("Editado", "El usuario ha sido actualizado correctamente.", "success");
                         } else {
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();
