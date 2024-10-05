@@ -6,7 +6,7 @@
 
 
 <ol class="breadcrumb mb-4 mt-4">
-    <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
+    <li class="breadcrumb-item"><a>Mantenimiento</a></li>
     <li class="breadcrumb-item active">Tickets</li>
 </ol>
 
@@ -260,11 +260,11 @@
             var Ticket = {
                 IdTicket: $("#txtid").val(),
                 IdUsuario: $("#txtIdUsuario").val(idUsuario),
+                Nombre: $("#txtnombre").val(nombreUsuario),
+                Correo: $("#txtcorreo").val(correoUsuario),
                 Prioridad: $("#cboprioridad").val() == "1" ? true : false,
                 Estado: $("#cboestado").val() == 1 ? true : false,
-                Asunto: $("#txtasunto").val(),
-                Correo: $("#txtcorreo").val(correoUsuario),
-                Nombre: $("#txtnombres").val(nombreUsuario)
+                Asunto: $("#txtasunto").val()
             }
 
 
@@ -296,11 +296,16 @@
                     else {
 
                         if (data.resultado) {
-                            tabladata.row(filaSeleccionada).data(Ticket).draw(false);
+                            //tabladata.row(filaSeleccionada).data(Ticket).draw(false);
                             filaSeleccionada = null;
-                            $("#FormModal").modal("hide");
+                            $(".modal-backdrop").remove();
+                            //$("#FormModal").modal("hide");
+                            //tabladata.ajax.reload(null, false);
                             swal("Editado", "El ticket ha sido actualizado correctamente.", "success");
-                            tabladata.ajax.reload(null, false);
+                            window.location.reload();
+                            //swal("Editado", "El ticket ha sido actualizado correctamente.", "success");
+                            //$(".modal-backdrop").remove();
+
                         } else {
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();

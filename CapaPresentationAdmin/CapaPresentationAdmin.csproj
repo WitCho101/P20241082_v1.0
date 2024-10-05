@@ -17150,7 +17150,6 @@
     <Content Include="API\.venv\Scripts\numba" />
     <Content Include="API\.venv\share\man\man1\ttx.1" />
     <Content Include="API\Config.json" />
-    <Content Include="API\files\SMG.CLIENTES %284%29.xlsx" />
     <Content Include="API\main.bat" />
     <Content Include="API\output\clientes.csv" />
     <Content Include="API\ventas_limpias.csv" />
@@ -17310,6 +17309,7 @@
     <Content Include="Views\Home\RecomendationsUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="API\files\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>

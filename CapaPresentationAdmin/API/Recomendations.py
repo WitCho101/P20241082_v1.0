@@ -77,8 +77,9 @@ def Generar_Recomendaciones(file_path):
         axis=1
     )
 
-    ultimos_dos_meses = current_date - timedelta(days=60)
+    ultimos_dos_meses = current_date - timedelta(days=220)
     productos_recientes = data[data['FECHA'] >= ultimos_dos_meses]
+
     productos_recientes_agrupados = productos_recientes.groupby(['Mes', 'DESCRIPCION_PRODUCTO']).agg({
         'VALORSINIGV': 'sum',
         'NRO_DOCUMENTO': 'count'
@@ -141,4 +142,3 @@ def Generar_Recomendaciones(file_path):
     productos_recientes_agrupados[['Mes', 'DESCRIPCION_PRODUCTO', 'Recomendaciones_Adicionales']].to_sql('recomendaciones_adicionales', engine, if_exists='replace', index=False)
     recomendaciones_usuario_producto[['USUARIO', 'Mes', 'Cantidad_Producto', 'Total_Ventas', 'Cantidad_Clientes', 'Recomendaciones_Usuario_Producto']].to_sql('recomendaciones_usuario_producto', engine, if_exists='replace', index=False)
     recomendaciones_usuario_cliente[['USUARIO', 'Mes', 'Cantidad_Clientes', 'Total_Ventas', 'Recomendaciones_Usuario_Cliente']].to_sql('recomendaciones_usuario_cliente', engine, if_exists='replace', index=False)
-
