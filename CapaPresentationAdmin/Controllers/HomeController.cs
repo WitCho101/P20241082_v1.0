@@ -105,6 +105,7 @@ namespace CapaPresentationAdmin.Controllers
         {
             try
             {
+                string[] allowedExtensions = { ".xlsx"};
                 string path = Server.MapPath("~/API/files/");
                 if (!Directory.Exists(path))
                 {
@@ -113,16 +114,34 @@ namespace CapaPresentationAdmin.Controllers
 
                 if (fileVentas != null)
                 {
+                    string extension = Path.GetExtension(fileVentas.FileName).ToLower();
+                    if (!allowedExtensions.Contains(extension))
+                    {
+                        TempData["Message"] = "El archivo de ventas debe ser un archivo Excel (.xlsx)";
+                        return RedirectToAction("Analisis");
+                    }
                     string ventasPath = Path.Combine(path, fileVentas.FileName);
                     fileVentas.SaveAs(ventasPath);
                 }
                 if (fileProductos != null)
                 {
+                    string extension = Path.GetExtension(fileProductos.FileName).ToLower();
+                    if (!allowedExtensions.Contains(extension))
+                    {
+                        TempData["Message"] = "El archivo de productos debe ser un archivo Excel (.xlsx)";
+                        return RedirectToAction("Analisis");
+                    }
                     string productosPath = Path.Combine(path, fileProductos.FileName);
                     fileProductos.SaveAs(productosPath);
                 }
                 if (fileClientes != null)
                 {
+                    string extension = Path.GetExtension(fileClientes.FileName).ToLower();
+                    if (!allowedExtensions.Contains(extension))
+                    {
+                        TempData["Message"] = "El archivo de clientes debe ser un archivo Excel (.xlsx)";
+                        return RedirectToAction("Analisis");
+                    }
                     string clientesPath = Path.Combine(path, fileClientes.FileName);
                     fileClientes.SaveAs(clientesPath);
                 }

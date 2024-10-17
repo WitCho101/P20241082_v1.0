@@ -15,15 +15,15 @@
     <form id="uploadForm" method="post" enctype="multipart/form-data" action="@Url.Action("UploadFiles", "Home")">
         <div class="mb-3">
             <label for="fileVentas" class="form-label">Archivo de Ventas</label>
-            <input class="form-control" type="file" id="fileVentas" name="fileVentas">
+            <input class="form-control" type="file" id="fileVentas" name="fileVentas" accept=".xlsx">
         </div>
         <div class="mb-3">
             <label for="fileProductos" class="form-label">Archivo de Productos</label>
-            <input class="form-control" type="file" id="fileProductos" name="fileProductos">
+            <input class="form-control" type="file" id="fileProductos" name="fileProductos" accept=".xlsx">
         </div>
         <div class="mb-3">
             <label for="fileClientes" class="form-label">Archivo de Clientes</label>
-            <input class="form-control" type="file" id="fileClientes" name="fileClientes">
+            <input class="form-control" type="file" id="fileClientes" name="fileClientes" accept=".xlsx">
         </div>
         <button type="submit" class="btn btn-primary">Subir Archivos</button>
     </form>
